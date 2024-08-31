@@ -35,6 +35,16 @@ return {
     optional = true,
   },
   {
+    "lualine.nvim",
+    opts = function(_, opts)
+      opts.options = vim.tbl_extend("force", opts.options or {}, {
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
+      })
+    end,
+    optional = true,
+  },
+  {
     "nvim-cmp",
     opts = function(_, opts)
       local cmp = require("cmp")
