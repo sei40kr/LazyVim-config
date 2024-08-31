@@ -1,5 +1,23 @@
 return {
   {
+    "max397574/better-escape.nvim",
+    opts = {
+      default_mappings = true,
+      mappings = {
+        i = {
+          j = { k = "<Esc>" },
+        },
+        c = {
+          j = { k = "<Esc>" },
+        },
+        t = {
+          j = { k = "<Esc>" },
+        },
+      },
+    },
+    event = { "CmdlineEnter", "InsertEnter", "TermEnter" },
+  },
+  {
     "bufferline.nvim",
     keys = {
       { "<M-Left>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev buffer" },
