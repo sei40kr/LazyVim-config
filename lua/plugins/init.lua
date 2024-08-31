@@ -25,4 +25,21 @@ return {
     end,
     optional = true,
   },
+  {
+    "telescope.nvim",
+    opts = function(_, opts)
+      local actions = require("telescope.actions")
+      return vim.tbl_deep_extend("force", opts, {
+        defaults = {
+          mappings = {
+            i = {
+              ["<C-k>"] = actions.move_selection_previous,
+              ["<C-j>"] = actions.move_selection_next,
+            },
+          },
+        },
+      })
+    end,
+    optional = true,
+  },
 }
