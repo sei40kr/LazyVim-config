@@ -25,6 +25,7 @@ return {
       { "<M-S-Left>", "<Cmd>BufferLineMovePrev<CR>", desc = "Move buffer prev" },
       { "<M-S-Right>", "<Cmd>BufferLineMoveNext<CR>", desc = "Move buffer next" },
     },
+    optional = true,
   },
   {
     "gitsigns.nvim",
@@ -83,5 +84,6 @@ return {
     opts = {
       icons = { mappings = false },
     },
+    optional = true,
   },
 }
