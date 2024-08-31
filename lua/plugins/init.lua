@@ -42,4 +42,10 @@ return {
     end,
     optional = true,
   },
+  {
+    "which-key.nvim",
+    opts = {
+      icons = { mappings = false },
+    },
+  },
 }
