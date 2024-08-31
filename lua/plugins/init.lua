@@ -9,6 +9,13 @@ return {
     },
   },
   {
+    "gitsigns.nvim",
+    opts = {
+      attach_to_untracked = true,
+    },
+    optional = true,
+  },
+  {
     "nvim-cmp",
     opts = function(_, opts)
       local cmp = require("cmp")
