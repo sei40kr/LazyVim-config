@@ -8,4 +8,18 @@ return {
       { "<M-S-Right>", "<Cmd>BufferLineMoveNext<CR>", desc = "Move buffer next" },
     },
   },
+  {
+    "nvim-cmp",
+    opts = function(_, opts)
+      return vim.tbl_deep_extend("force", opts, {
+        completion = {
+          completeopt = "menu,menuone,noinsert,noselect",
+        },
+        mapping = {
+          ["<CR>"] = LazyVim.cmp.confirm({ select = false }),
+        },
+      })
+    end,
+    optional = true,
+  },
 }
