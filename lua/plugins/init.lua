@@ -11,12 +11,15 @@ return {
   {
     "nvim-cmp",
     opts = function(_, opts)
+      local cmp = require("cmp")
       return vim.tbl_deep_extend("force", opts, {
         completion = {
           completeopt = "menu,menuone,noinsert,noselect",
         },
         mapping = {
           ["<CR>"] = LazyVim.cmp.confirm({ select = false }),
+          ["<C-j>"] = cmp.mapping.select_next_item(),
+          ["<C-k>"] = cmp.mapping.select_prev_item(),
         },
       })
     end,
