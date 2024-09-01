@@ -28,6 +28,14 @@ return {
     optional = true,
   },
   {
+    "conform.nvim",
+    opts = function(_, opts)
+      opts.formatters_by_ft = opts.formatters_by_ft or {}
+      opts.formatters_by_ft.nix = { "nixfmt" }
+    end,
+    optional = true,
+  },
+  {
     "gitsigns.nvim",
     opts = {
       attach_to_untracked = true,
