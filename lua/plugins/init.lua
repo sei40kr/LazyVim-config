@@ -19,6 +19,9 @@ return {
   },
   {
     "bufferline.nvim",
+    opts = function(_, opts)
+      opts.options.always_show_bufferline = true
+    end,
     keys = {
       { "<M-Left>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev buffer" },
       { "<M-Right>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next buffer" },
