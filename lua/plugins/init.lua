@@ -39,6 +39,13 @@ return {
     optional = true,
   },
   {
+    "edgy.nvim",
+    opts = {
+      exit_when_last = true,
+    },
+    optional = true,
+  },
+  {
     "gitsigns.nvim",
     opts = {
       attach_to_untracked = true,
