@@ -39,6 +39,13 @@ return {
     optional = true,
   },
   {
+    "dressing.nvim",
+    opts = function(_, opts)
+      opts.input = vim.tbl_extend("force", opts.input or {}, { relative = "editor" })
+    end,
+    optional = true,
+  },
+  {
     "edgy.nvim",
     opts = {
       exit_when_last = true,
