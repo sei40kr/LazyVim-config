@@ -71,6 +71,11 @@ return {
     optional = true,
   },
   {
+    "neo-tree.nvim",
+    opts = { use_popups_for_input = false },
+    optional = true,
+  },
+  {
     "nvim-cmp",
     opts = function(_, opts)
       local cmp = require("cmp")
