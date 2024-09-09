@@ -76,6 +76,13 @@ return {
     optional = true,
   },
   {
+    "noice.nvim",
+    opts = function(_, opts)
+      opts.presets.lsp_doc_border = true
+    end,
+    optional = true,
+  },
+  {
     "nvim-cmp",
     opts = function(_, opts)
       local cmp = require("cmp")
