@@ -72,7 +72,14 @@ return {
   },
   {
     "neo-tree.nvim",
-    opts = { use_popups_for_input = false },
+    dependencies = { "sei40kr/neo-tree-evil-mappings.nvim" },
+    opts = function(_, opts)
+      local evil_mappings = require("neo-tree-evil-mappings")
+      opts.use_popups_for_input = false
+      opts.commands = vim.tbl_extend("force", opts.commands or {}, evil_mappings.commands)
+      opts.window = opts.window or {}
+      opts.window.mappings = vim.tbl_extend("force", opts.window.mappings or {}, evil_mappings.mappings)
+    end,
     optional = true,
   },
   {
