@@ -125,9 +125,12 @@ return {
   },
   {
     "which-key.nvim",
-    opts = {
-      icons = { mappings = false },
-    },
+    opts = function(_, opts)
+      opts.icons = opts.icons or {}
+      opts.icons.mappings = false
+      opts.win = opts.win or {}
+      opts.win.no_overlap = false
+    end,
     optional = true,
   },
 }
