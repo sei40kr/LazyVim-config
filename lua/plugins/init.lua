@@ -80,6 +80,12 @@ return {
       opts.window = opts.window or {}
       opts.window.mappings = vim.tbl_extend("force", opts.window.mappings or {}, evil_mappings.mappings)
       opts.filesystem = opts.filesystem or {}
+      opts.filesystem.filtered_items = {
+        visible = false,
+        hide_dotfiles = false,
+        hide_gitignored = false,
+        hide_by_name = { ".git" },
+      }
       opts.filesystem.window = opts.filesystem.window or {}
       opts.filesystem.window.mappings =
         vim.tbl_extend("force", opts.filesystem.window.mappings or {}, evil_mappings.filesystem_mappings)
