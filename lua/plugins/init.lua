@@ -79,6 +79,10 @@ return {
       opts.commands = vim.tbl_extend("force", opts.commands or {}, evil_mappings.commands)
       opts.window = opts.window or {}
       opts.window.mappings = vim.tbl_extend("force", opts.window.mappings or {}, evil_mappings.mappings)
+      opts.filesystem = opts.filesystem or {}
+      opts.filesystem.window = opts.filesystem.window or {}
+      opts.filesystem.window.mappings =
+        vim.tbl_extend("force", opts.filesystem.window.mappings or {}, evil_mappings.filesystem_mappings)
     end,
     optional = true,
   },
