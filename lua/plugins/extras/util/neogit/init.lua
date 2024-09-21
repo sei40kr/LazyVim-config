@@ -26,6 +26,20 @@ return {
         section = { "", "" },
       },
     },
+    config = function(_, opts)
+      require("neogit").setup(opts)
+
+      local augroup = vim.api.nvim_create_augroup("neogit_enable_copilot_in_commit_message", {})
+      vim.api.nvim_create_autocmd("FileType", {
+        group = augroup,
+        pattern = "NeogitCommitMessage",
+        callback = function()
+          -- HACK: List the commit message buffer to allow using Copilot in it.
+          -- Be careful with this, as it may send the secrets in the diff to GitHub.
+          vim.bo.buflisted = true
+        end,
+      })
+    end,
     keys = {
       {
         "<leader>gg",
