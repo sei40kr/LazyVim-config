@@ -71,6 +71,18 @@ return {
     optional = true,
   },
   {
+    "mason.nvim",
+    enabled = false,
+  },
+  {
+    "mason-lspconfig.nvim",
+    enabled = false,
+  },
+  {
+    "mason-nvim-dap.nvim",
+    enabled = false,
+  },
+  {
     "neo-tree.nvim",
     dependencies = { "sei40kr/neo-tree-evil-mappings.nvim" },
     opts = function(_, opts)
