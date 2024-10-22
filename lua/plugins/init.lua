@@ -129,6 +129,10 @@ return {
     optional = true,
   },
   {
+    "sei40kr/nvimacs",
+    event = { "InsertEnter", "CmdlineEnter" },
+  },
+  {
     "telescope.nvim",
     opts = function(_, opts)
       local actions = require("telescope.actions")
