@@ -18,6 +18,17 @@ return {
     event = { "CmdlineEnter", "InsertEnter", "TermEnter" },
   },
   {
+    "blink.cmp",
+    opts = function(_, opts)
+      opts.windows.autocomplete.selection = "manual"
+      opts.windows.documentation.border = "rounded"
+
+      opts.keymap["<C-j>"] = { "select_next", "fallback" }
+      opts.keymap["<C-k>"] = { "select_prev", "fallback" }
+    end,
+    optional = true,
+  },
+  {
     "bufferline.nvim",
     opts = function(_, opts)
       opts.options.always_show_bufferline = true
