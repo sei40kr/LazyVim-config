@@ -23,6 +23,8 @@ return {
       opts.completion.list = { selection = "manual" }
       opts.completion.menu.border = "rounded"
 
+      opts.completion.documentation = { auto_show = true }
+
       opts.keymap["<C-j>"] = { "select_next", "fallback" }
       opts.keymap["<C-k>"] = { "select_prev", "fallback" }
     end,
