@@ -20,8 +20,8 @@ return {
   {
     "blink.cmp",
     opts = function(_, opts)
-      opts.windows.autocomplete.selection = "manual"
-      opts.windows.documentation.border = "rounded"
+      opts.completion.list = { selection = "manual" }
+      opts.completion.menu.border = "rounded"
 
       opts.keymap["<C-j>"] = { "select_next", "fallback" }
       opts.keymap["<C-k>"] = { "select_prev", "fallback" }
