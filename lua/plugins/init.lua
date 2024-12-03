@@ -21,9 +21,11 @@ return {
     "blink.cmp",
     opts = function(_, opts)
       opts.completion.list = { selection = "manual" }
-      opts.completion.menu.border = "rounded"
 
-      opts.completion.documentation = { auto_show = true }
+      opts.completion.documentation = {
+        auto_show = true,
+        window = { border = "rounded" },
+      }
 
       opts.keymap["<C-j>"] = { "select_next", "fallback" }
       opts.keymap["<C-k>"] = { "select_prev", "fallback" }
