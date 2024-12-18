@@ -1,7 +1,7 @@
 return {
   {
     "NeogitOrg/neogit",
-    dependencies = { "plenary.nvim", "telescope.nvim" },
+    dependencies = { "plenary.nvim" },
     init = function()
       -- delete lazygit keymap for file history
       vim.api.nvim_create_autocmd("User", {
@@ -14,16 +14,14 @@ return {
     end,
     opts = {
       graph_style = "unicode",
-      telescope_sorter = function()
-        if LazyVim.has("telescope-fzf-native.nvim") then
-          return require("telescope").extensions.fzf.native_fzf_sorter()
-        end
-        return nil
-      end,
       signs = {
         hunk = { "", "" },
         item = { "", "" },
         section = { "", "" },
+      },
+      integrations = {
+        telescope = false,
+        fzf_lua = true,
       },
     },
     config = function(_, opts)
