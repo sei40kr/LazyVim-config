@@ -165,6 +165,7 @@ return {
         { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
         { section = "startup" },
       }
+      opts.scroll = { enabled = false }
     end,
   },
 
