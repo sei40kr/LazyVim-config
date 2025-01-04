@@ -68,6 +68,105 @@ return {
     optional = true,
   },
   {
+    "fzf-lua",
+    dependencies = { "nvim-telescope/telescope-symbols.nvim" },
+    init = function()
+      require("which-key").add({
+        { "<leader>i", group = "insert" },
+      })
+    end,
+    keys = function(_, keys)
+      local function insert_symbol(sources)
+        ---@type string[]
+        local files = vim.tbl_filter(function(file)
+          return vim.tbl_contains(sources, vim.fn.fnamemodify(file, ":t:r")) and vim.fn.filereadable(file) == 1
+        end, vim.api.nvim_get_runtime_file("data/telescope-sources/*.json", true))
+
+        require("fzf-lua").fzf_exec(function(fzf_cb)
+          coroutine.wrap(function()
+            local co = coroutine.running()
+            for _, file in ipairs(files) do
+              ---@diagnostic disable: redefined-local
+              vim.uv.fs_open(file, "r", 438, function(err, fd)
+                assert(not err, err)
+                vim.uv.fs_fstat(fd, function(err, stat)
+                  assert(not err, err)
+                  ---@cast stat uv.fs_stat.result
+                  vim.uv.fs_read(fd, stat.size, 0, function(err, data)
+                    assert(not err, err)
+                    ---@type { [1]: string, [2]: string }[]
+                    local entries = vim.json.decode(data)
+                    for _, entry in ipairs(entries) do
+                      fzf_cb(entry[1] .. " " .. entry[2])
+                    end
+                    vim.uv.fs_close(fd, function()
+                      coroutine.resume(co)
+                    end)
+                  end)
+                end)
+              end)
+              ---@diagnostic enable: redefined-local
+              coroutine.yield()
+            end
+            fzf_cb()
+          end)()
+        end, {
+          winopts = {
+            title = " Symbols ",
+            title_pos = "center",
+          },
+          actions = {
+            default = function(selected)
+              vim.cmd([[startinsert]])
+              for _, entry in ipairs(selected) do
+                local symbol = entry:match("^%S+")
+                vim.api.nvim_put({ symbol }, "", true, true)
+              end
+            end,
+          },
+        })
+      end
+
+      keys[#keys + 1] = {
+        "<leader>ie",
+        function()
+          insert_symbol({ "emoji" })
+        end,
+        desc = "Emoji",
+      }
+      keys[#keys + 1] = {
+        "<leader>im",
+        function()
+          insert_symbol({ "math" })
+        end,
+        desc = "Math Symbol",
+      }
+      keys[#keys + 1] = {
+        "<leader>in",
+        function()
+          insert_symbol({ "nerd" })
+        end,
+        desc = "Nerd Font Symbol",
+      }
+      keys[#keys + 1] = {
+        "<leader>ig",
+        function()
+          insert_symbol({ "gitmoji" })
+        end,
+        desc = "Gitmoji",
+        ft = "gitcommit",
+      }
+      keys[#keys + 1] = {
+        "<leader>ij",
+        function()
+          insert_symbol({ "julia" })
+        end,
+        desc = "Julia Unicode Symbol",
+        ft = "julia",
+      }
+    end,
+  },
+  {
     "gitsigns.nvim",
     opts = {
       attach_to_untracked = true,
