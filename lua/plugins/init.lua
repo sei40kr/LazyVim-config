@@ -76,6 +76,8 @@ return {
       })
     end,
     keys = function(_, keys)
+      ---@param sources string[]
+      ---@return nil
       local function insert_symbol(sources)
         ---@type string[]
         local files = vim.tbl_filter(function(file)
