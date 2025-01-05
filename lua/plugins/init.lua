@@ -70,11 +70,6 @@ return {
   {
     "fzf-lua",
     dependencies = { "nvim-telescope/telescope-symbols.nvim" },
-    init = function()
-      require("which-key").add({
-        { "<leader>i", group = "insert" },
-      })
-    end,
     keys = function(_, keys)
       ---@param sources string[]
       ---@return nil

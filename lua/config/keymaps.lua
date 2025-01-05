@@ -2,6 +2,10 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+require("which-key").add({
+  { "<leader>i", group = "insert" },
+})
+
 vim.keymap.set("n", "[<Space>", function()
   local lines = vim.fn["repeat"]({ "" }, vim.v.count1)
   local current_line = vim.api.nvim_win_get_cursor(0)[1]
