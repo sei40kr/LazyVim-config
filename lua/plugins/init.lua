@@ -241,6 +241,26 @@ return {
     optional = true,
   },
   {
+    "nvim-treesitter",
+    opts = function(_, opts)
+      opts.incremental_selection.keymaps = {
+        init_selection = "<leader>v",
+        node_incremental = "v",
+        scope_incremental = false,
+        node_decremental = "V",
+      }
+    end,
+    keys = function()
+      local keymaps = LazyVim.opts("nvim-treesitter").incremental_selection.keymaps
+      return {
+        { keymaps.init_selection, desc = "Increment Selection" },
+        { keymaps.node_incremental, desc = "Increment Selection", mode = "x" },
+        { keymaps.node_decremental, desc = "Decrement Selection", mode = "x" },
+      }
+    end,
+    optional = true,
+  },
+  {
     "sei40kr/nvimacs",
     event = { "InsertEnter", "CmdlineEnter" },
   },
@@ -273,6 +293,18 @@ return {
       opts.icons.mappings = false
       opts.win = opts.win or {}
       opts.win.no_overlap = false
+
+      if LazyVim.has("nvim-treesitter") then
+        for i, spec in ipairs(opts.spec) do
+          if spec.desc == "Decrement Selection" or spec.desc == "Increment Selection" then
+            opts.spec[i] = nil
+          end
+        end
+        local keymaps = LazyVim.opts("nvim-treesitter").incremental_selection.keymaps
+        opts.spec[#opts.spec + 1] = { keymaps.init_selection, desc = "Increment Selection" }
+        opts.spec[#opts.spec + 1] = { keymaps.node_incremental, desc = "Increment Selection", mode = "x" }
+        opts.spec[#opts.spec + 1] = { keymaps.node_decremental, desc = "Decrement Selection", mode = "x" }
+      end
     end,
     optional = true,
   },
