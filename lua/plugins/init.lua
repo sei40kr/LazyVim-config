@@ -20,7 +20,12 @@ return {
   {
     "blink.cmp",
     opts = function(_, opts)
-      opts.completion.list = { selection = "manual" }
+      opts.completion.list = {
+        selection = {
+          preselect = false,
+          auto_insert = false,
+        },
+      }
 
       opts.completion.documentation = {
         auto_show = true,
