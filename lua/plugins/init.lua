@@ -271,6 +271,7 @@ return {
   },
   {
     "snacks.nvim",
+    ---@param opts snacks.Config
     opts = function(_, opts)
       opts.dashboard.preset.header = [[
 ██╗   ██╗ ██████╗ ███╗   ██╗██╗   ██╗██╗███╗   ███╗
@@ -348,6 +349,13 @@ return {
         end,
         { section = "startup" },
       }
+
+      opts.picker.sources = {
+        files = { hidden = true },
+        explorer = { hidden = true },
+        grep = { hidden = true },
+      }
+
       opts.scroll = { enabled = false }
     end,
   },
