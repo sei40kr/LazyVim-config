@@ -219,6 +219,9 @@ return {
         explorer = { hidden = true },
         grep = { hidden = true },
       }
+      opts.picker.win.preview = {
+        wo = { wrap = true },
+      }
 
       opts.scroll = { enabled = false }
     end,
