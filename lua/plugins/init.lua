@@ -114,6 +114,18 @@ return {
     event = { "InsertEnter", "CmdlineEnter" },
   },
   {
+    "sidekick.nvim",
+    opts = {
+      cli = {
+        prompts = {
+          commit = "Commit staged changes without AI attribution",
+          amend = "Amend the previous commit with staged changes, review and update the commit message if needed without AI attribution",
+          fixup = "Find the most appropriate commit for staged changes and create a fixup commit, then rebase to apply the fixup. If no appropriate commit is found, ask the user. If conflicts occur during rebase, resolve them. Review and update the commit message if needed without AI attribution",
+        },
+      },
+    },
+  },
+  {
     "snacks.nvim",
     ---@param opts snacks.Config
     opts = function(_, opts)
