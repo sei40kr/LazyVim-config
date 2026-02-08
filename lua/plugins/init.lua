@@ -220,6 +220,17 @@ return {
   },
 
   {
+    "christoomey/vim-tmux-navigator",
+    keys = {
+      { "<M-h>", "<Cmd>TmuxNavigateLeft<CR>" },
+      { "<M-j>", "<Cmd>TmuxNavigateDown<CR>" },
+      { "<M-k>", "<Cmd>TmuxNavigateUp<CR>" },
+      { "<M-l>", "<Cmd>TmuxNavigateRight<CR>" },
+      { "<M-\\>", "<Cmd>TmuxNavigatePrevious<CR>" },
+    },
+  },
+
+  {
     "which-key.nvim",
     opts = function(_, opts)
       opts.icons = opts.icons or {}
