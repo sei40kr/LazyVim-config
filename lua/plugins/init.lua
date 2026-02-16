@@ -91,6 +91,13 @@ return {
     optional = true,
   },
   {
+    "neovim/nvim-lspconfig",
+    opts = function()
+      vim.lsp.enable("qmlls")
+    end,
+    optional = true,
+  },
+  {
     "mason.nvim",
     enabled = false,
   },
