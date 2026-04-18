@@ -124,6 +124,10 @@ return {
     "sidekick.nvim",
     opts = {
       cli = {
+        mux = {
+          enabled = true,
+          create = "split",
+        },
         prompts = {
           commit = "Commit staged changes without AI attribution",
           amend = "Amend the previous commit with staged changes, review and update the commit message if needed without AI attribution",
